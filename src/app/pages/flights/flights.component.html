@@ -1,0 +1,23 @@
+<div class="container">
+
+  <div class="row justify-content-center">
+    <h1 class="text-center">Flights</h1>
+  </div>
+  <div class="row justify-content-center">
+    <button style="width: 200px;" (click)="addFlight()" class="btn btn-danger">Add</button>
+  </div>
+
+  <div class="row justify-content-center">
+    <div *ngFor="let item of flights" class="col-4">
+      <div class="card">
+        <div class="card-header">
+          {{item.flightCode}}
+        </div>
+        <div class="card-body">
+          {{item.flightState}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
