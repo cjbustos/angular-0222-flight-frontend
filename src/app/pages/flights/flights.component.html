@@ -1,23 +1,80 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
 
-  <div class="row justify-content-center">
-    <h1 class="text-center">Flights</h1>
-  </div>
-  <div class="row justify-content-center">
-    <button style="width: 200px;" (click)="addFlight()" class="btn btn-danger">Add Flight</button>
-  </div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flights resume</title>
+</head>
 
-  <div class="row justify-content-center">
-    <div *ngFor="let item of flights" class="col-4">
-      <div class="card">
-        <div class="card-header">
-          {{item.flightCode}}
-        </div>
-        <div class="card-body">
-          {{item.flightState}}
+<body>
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <h1 class="text-center">Flights</h1>
+    </div>
+    <div class="row justify-content-center">
+      <button style="width: 200px;" (click)="addFlight()" class="btn btn-danger">Add Flight</button>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+      <div *ngFor="let item of flights" class="col-4">
+        <div class="card">
+          <div class="card-header">
+            {{item.flightCode}}
+          </div>
+          <div class="card-body">
+            {{item.flightState}}
+          </div>
         </div>
       </div>
     </div>
+    <br>
+    <h2 class="text-center">Flights</h2>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <form [formGroup]="flightForm" (ngSubmit)="addFlightFrom()">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Flight Code" formControlName="flightCode">
+          </div>
+          <br>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="From" formControlName="from">
+          </div>
+          <br>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="To" formControlName="to">
+          </div>
+          <br>
+          <div class="form-group">
+            <input type="date" class="form-control" placeholder="Date" formControlName="date">
+          </div>
+          <br>
+          <div class="form-group">
+            <input type="time" class="form-control" placeholder="Time" formControlName="time">
+          </div>
+          <br>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Flight State" formControlName="flightState">
+          </div>
+          <br>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Company" formControlName="company">
+          </div>
+          <br>
+          <div class="row justify-content-center">
+            <button class="btn btn-success" type="submit">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <pre>{{flightForm.value | json}}</pre>
+
   </div>
 
-</div>
+
+
+</body>
+
+</html>

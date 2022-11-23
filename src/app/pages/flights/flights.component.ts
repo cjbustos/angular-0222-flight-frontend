@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Flight, FlightResponse } from 'src/app/model/flight';
 import { FlightsService } from 'src/app/services/flights.service';
 
@@ -16,6 +17,20 @@ export class FlightsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllFlights();
+  }
+
+  flightForm = new FormGroup({
+    flightCode: new FormControl(),
+    from: new FormControl(),
+    to: new FormControl(),
+    date: new FormControl(),
+    time: new FormControl(),
+    flightState: new FormControl(),
+    company: new FormControl()
+  })
+
+  addFlightFrom() {
+    console.log(this.flightForm.value)
   }
 
   addFlight() {
