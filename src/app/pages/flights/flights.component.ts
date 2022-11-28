@@ -29,19 +29,26 @@ export class FlightsComponent implements OnInit {
     company: new FormControl()
   })
 
+  timeFormat(t: string): string {
+    let result1 = t.substr(0, 2);
+    let result2 = t.substr(3, 4);
+    let result = result1.concat(result2);
+    return result;
+  }
+
   addFlightFrom() {
-    console.log(this.flightForm.value)
+    console.log(this.flightForm.value);
   }
 
   addFlight() {
     let flight = new Flight();
-    flight.flightCode = 'AR1600';
-    flight.from = 'Jujuy';
-    flight.to = 'Buenos Aires';
-    flight.date = '2022-11-10';
-    flight.time = '1500';
-    flight.flightState = 'delayed';
-    flight.company = 'Aerolineas Argentinas';
+    flight.flightCode = this.flightForm.value.flightCode;
+    flight.from = this.flightForm.value.from;
+    flight.to = this.flightForm.value.to;
+    flight.date = this.flightForm.value.date;
+    flight.time = this.timeFormat(this.flightForm.value.time);
+    flight.flightState = this.flightForm.value.flightState;
+    flight.company = this.flightForm.value.company;
 
     this.flightService.addFlight(flight).subscribe({
       next: (data: any) => {
