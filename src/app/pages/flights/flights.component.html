@@ -14,7 +14,7 @@
       <h1 class="text-center">Flights</h1>
     </div>
     <div class="row justify-content-center">
-      <button style="width: 200px;" (click)="addFlight()" class="btn btn-danger">Add Flight</button>
+      <button style="width: 100px;" (click)="addFlight()" class="btn btn-danger">Add Flight</button>
     </div>
     <br>
     <div class="row justify-content-center">
@@ -25,6 +25,8 @@
           </div>
           <div class="card-body">
             {{item.flightState}}
+            <br>
+            <button class="btn btn-warning" (click)="getFlightById(item._id)">Update</button>
           </div>
         </div>
       </div>
@@ -63,7 +65,7 @@
           </div>
           <br>
           <div class="row justify-content-center">
-            <button class="btn btn-success" type="submit">Add Flight</button>
+            <button style="width: 120px;" class="btn btn-success" type="submit">Add Flight</button>
           </div>
         </form>
       </div>

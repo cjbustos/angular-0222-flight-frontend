@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Flight } from '../model/flight';
+import { Flight, FlightResponse } from '../model/flight';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +12,20 @@ export class FlightsService {
 
   url: string = 'http://localhost:8080/';
 
+  getFlights() {
+    return this.http.get(`${this.url}flights`);
+  }
+
+  getFlight(id: string){
+    return this.http.get(`${this.url}flights/${id}`)
+  }
+
   addFlight(flight: Flight) {
     return this.http.post(`${this.url}add-flight`, flight);
   }
 
-  getFlights() {
-    return this.http.get(`${this.url}flights`);
+  updateFlight(flight: Flight, id: string){
+    return this.http.put(`${this.url}flights/update/${id}`, flight);
   }
 
 }
